@@ -1,10 +1,10 @@
 export enum ACCOUNT_TYPE {
-  CASH,
-  BANK,
-  LOAN,
+  CASH = 'CASH',
+  BANK = 'BANK',
+  LOAN = 'LOAN',
 }
 
 export enum BANK_ACCOUNT_TYPE {
-  CHECKING,
-  SAVING,
+  CHECKING = 'CHECKING',
+  SAVING = 'SAVING',
 }

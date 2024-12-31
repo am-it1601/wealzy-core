@@ -1,11 +1,17 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-import { Account } from '../../common/schema/wz.accounts.schema';
+import { ACCOUNT_TYPE } from '../../common/constants';
 
-@Schema()
-export class CashAccount extends Account {
+@Schema({
+  validateBeforeSave: true,
+})
+export class CashAccount {
   @Prop({ required: true })
   openingBalance: number;
+  accountType: ACCOUNT_TYPE = ACCOUNT_TYPE.CASH;
+  accountName: string;
+  runningBalance: number;
+  description: string;
 }
 
 export const CashAccountSchema = SchemaFactory.createForClass(CashAccount);

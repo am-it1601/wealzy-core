@@ -6,9 +6,9 @@ import { Account, AccountSchema } from '../common/schema/wz.accounts.schema';
 import { AccountsController } from './accounts.controller';
 import { BankAccountSchema } from './schema/wz.bank-account.schema';
 import { CashAccountSchema } from './schema/wz.cash-account.schema';
+import { WzAccountService } from './services/wz-account.service';
 
 @Module({
-  controllers: [AccountsController],
   imports: [
     MongooseModule.forFeatureAsync([
       {
@@ -22,6 +22,13 @@ import { CashAccountSchema } from './schema/wz.cash-account.schema';
         },
       },
     ]),
+  ],
+  controllers: [AccountsController],
+  providers: [
+    {
+      provide: 'WzAccountService',
+      useClass: WzAccountService,
+    },
   ],
 })
 export class WzAccountsManagementModule {}
